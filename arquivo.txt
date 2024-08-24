@@ -1,0 +1,18 @@
+db.games_Playstation_Store.insertMany([{
+nome: "God of War",
+preco: "R$ 250,00"
+armazenamento: "90.6 Gb"
+},
+
+{
+    nome: "BloodBorne"
+    preco: "R$ 88,00"
+    armazenamento: "41 Gb"
+},
+
+{
+    nome: "Sekiro: Shadows Die Twice"
+    preco: "R$ 270,99"
+    armazenamento: "25 Gb"
+}
+])

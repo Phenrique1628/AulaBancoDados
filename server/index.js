@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('nome_do_banco');
-    collection = db.collection('nome_da_coleção');
+    const db = client.db('matriculas');
+    collection = db.collection('matriculas');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -31,7 +31,8 @@ app.post('/matriculas', async (req, res) => {
   try {
     const novaMatricula = req.body;
 
-    //complete o código
+    const result = await collection.insertOne(novaMatricula);
+
     
     res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
   } catch (err) {
@@ -41,6 +42,9 @@ app.post('/matriculas', async (req, res) => {
 
 app.get('/matriculas', async (req, res) => {
   try {
+
+
+    const matriculas = await collection.find().toArray();
     //complete o código
     res.status(200).json(matriculas);
   } catch (err) {
@@ -90,7 +94,7 @@ app.delete('/matriculas/:id', async (req, res) => {
     const id = req.params.id;
     const newId =  new ObjectId(id);
 
-    //complete o código
+    const result = await collection.deleteOne({ _id: newId })
 
     if (result.deletedCount === 0) {
       res.status(404).json({ message: 'Matrícula não encontrada' });
