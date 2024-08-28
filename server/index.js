@@ -14,8 +14,8 @@ async function connectDB() {
     await client.connect();
     console.log('Connected to MongoDB');
 
-    const db = client.db('matriculas');
-    collection = db.collection('matriculas');
+    const db = client.db('games_Playstation_Store');
+    collection = db.collection('games_Playstation_Store');
 
   } catch (err) {
     console.error('Failed to connect to MongoDB', err);
@@ -34,21 +34,21 @@ app.post('/matriculas', async (req, res) => {
     const result = await collection.insertOne(novaMatricula);
 
     
-    res.status(201).json({ message: 'Matrícula criada com sucesso', matriculaId: result.insertedId });
+    res.status(201).json({ message: 'Game criado com sucesso', matriculaId: result.insertedId });
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao criar matrícula', error: err });
+    res.status(500).json({ message: 'Erro ao criar game', error: err });
   }
 });
 
-app.get('/matriculas', async (req, res) => {
+app.get('/games', async (req, res) => {
   try {
 
 
-    const matriculas = await collection.find().toArray();
+    const games = await collection.find().toArray();
     //complete o código
-    res.status(200).json(matriculas);
+    res.status(200).json(games);
   } catch (err) {
-    res.status(500).json({ message: 'Erro ao buscar matrículas', error: err });
+    res.status(500).json({ message: 'Erro ao buscar games', error: err });
   }
 });
 
@@ -77,9 +77,9 @@ app.put('/matriculas/:id', async (req, res) => {
     const newId =  new ObjectId(id);
     const atualizacao = req.body;
 
-    //complete o código
+    const alterar =  await collection.updateOne( { _id: newId }, { $set: atualizacao });
 
-    if (result.matchedCount === 0) {
+    if (alterar.matchedCount === 0) {
       res.status(404).json({ message: 'Matrícula não encontrada' });
     } else {
       res.status(200).json({ message: 'Matrícula atualizada com sucesso' });
