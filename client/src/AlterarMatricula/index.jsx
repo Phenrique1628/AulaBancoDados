@@ -22,7 +22,7 @@ export default function UpdateMatricula() {
         body: JSON.stringify(atualizacao),
       });
       if (response.ok) {
-        alert('Matrícula atualizada com sucesso!');
+        alert('Game atualizado com sucesso!');
         navigate("/games");
       } else {
         alert('Erro ao atualizar game.');

@@ -149,7 +149,7 @@ body {
     justify-content: center;
     width: 200px;
     height: 200px;
-    background-color: #409706b7;
+    background-color: rgb(40, 40, 40);
     color: white;
     border-radius: 8px;
     text-decoration: none;
@@ -162,3 +162,16 @@ body {
   .card:hover {
     background-color: #0056b3;
   }
+
+  .banner{
+    width: 100%;
+    height: 100px;
+  }
+
+  .div-footer{
+    background-color: rgb(0, 54, 151);
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    padding: 5px;
+  }
+

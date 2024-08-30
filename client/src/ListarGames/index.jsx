@@ -27,12 +27,12 @@ export default function ReadGames() {
       if (response.ok) {
 
         setGames(games.filter((game) => game._id !== id));
-        alert('Matrícula excluída com sucesso!');
+        alert('Game excluído com sucesso!');
       } else {
-        alert('Erro ao excluir matrícula.');
+        alert('Erro ao excluir game.');
       }
     } catch (error) {
-      console.error('Erro ao excluir matrícula:', error);
+      console.error('Erro ao excluir game:', error);
     }
   };
 
